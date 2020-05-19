@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Rappi.iml" filepath="$PROJECT_DIR$/.idea/Rappi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rappi.iml" filepath="$PROJECT_DIR$/Rappi.iml" group="Rappi" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Rappi/app" />
     </modules>
   </component>
 </project>

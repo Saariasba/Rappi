@@ -1,0 +1,2 @@
+rootProject.name='Rappi'
+include ':app'
