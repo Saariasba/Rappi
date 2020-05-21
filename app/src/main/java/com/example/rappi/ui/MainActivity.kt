@@ -5,8 +5,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.rappi.R
-import com.example.rappi.model.PopularMovies
+import com.example.rappi.model.Movies
 import com.example.rappi.model.ServiceBuilder
 import com.example.rappi.utils.API_KEY
 import com.example.rappi.utils.MoviesAdapter
@@ -20,20 +21,36 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        loadMovies();
+    }
+
+    private fun loadMovies() {
         val compositeDisposable = CompositeDisposable()
         compositeDisposable.add(
-                ServiceBuilder.buildService().getMovies(API_KEY)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe({response -> onResponse(response)}, {t -> onFailure(t) }))
-
+            ServiceBuilder.buildService().getPopularMovies(API_KEY)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({response -> onResponse(response, recyclerView)}, { t -> onFailure(t) }))
+        compositeDisposable.add(
+            ServiceBuilder.buildService().getTopRatedMovies(API_KEY)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({response -> onResponse(response,recyclerView2)}, {t -> onFailure(t) }))
+        compositeDisposable.add(
+            ServiceBuilder.buildService().getUpComingMovies(API_KEY)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({response -> onResponse(response,recyclerView3)}, {t -> onFailure(t) }))
     }
 
     private fun onFailure(t: Throwable) {
         Toast.makeText(this,t.message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun onResponse(response: PopularMovies) {
+    private fun onResponse(
+        response: Movies,
+        recyclerView: RecyclerView
+    ) {
         progress_bar.visibility = View.GONE
         recyclerView.apply {
             setHasFixedSize(true)

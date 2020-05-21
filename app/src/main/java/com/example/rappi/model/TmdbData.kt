@@ -1,6 +1,6 @@
 package com.example.rappi.model
 
-data class PopularMovies(
+data class Movies(
     val results: List<Result>
 )
 
