@@ -17,4 +17,7 @@ interface TmdbEndpoints {
 
     @GET("/3/movie/"+ UP_COMING)
     fun getUpComingMovies(@Query("api_key") key: String): Observable<Movies>
+
+    @GET("/3/search/movie")
+    fun getMovieByName(@Query("api_key") key: String,@Query("query") name: String): Observable<Movies>
 }
