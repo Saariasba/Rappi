@@ -1,6 +1,6 @@
 package com.example.rappi.model
 
-
+//this is the structure of the JSON that comes from TMDB
 data class Movies(
     val results: List<Result>
 )

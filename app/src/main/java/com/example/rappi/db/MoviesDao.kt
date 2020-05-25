@@ -12,9 +12,12 @@ interface MoviesDao {
     @Query("SELECT * from movies")
     fun getAll(): List<Movie>
 
+    @Query("SELECT * from movies WHERE tipo = :type AND title like :char")
+    fun getBy(char : String, type : String): List<Movie>
+
     @Insert(onConflict = REPLACE)
-    fun insert(student: Movie)
+    fun insert(movie: Movie)
 
     @Delete
-    fun delete(student: Movie)
+    fun delete(movie: Movie)
 }

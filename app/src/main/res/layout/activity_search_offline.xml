@@ -35,6 +35,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <ProgressBar
+                android:id="@+id/progress_bar_offline"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:indeterminate="true"
+                android:indeterminateBehavior="repeat"
+                android:indeterminateTint="@color/colorGreen"
+                android:scaleY="4" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -43,40 +53,25 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RelativeLayout
-                        android:layout_width="200dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1">
-
-                        <Button
-                            android:id="@+id/search"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_weight="1"
-                            android:onClick="doSearch"
-                            android:text="@string/search" />
-                    </RelativeLayout>
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_weight="1">
+                        android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/textToSearch"
+                            android:id="@+id/textToSearchOffline"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:ems="10"
-                            android:inputType="textPersonName"
+                            android:background="@color/colorGray"
                             android:hint="@string/set_name"
-                            android:textColorHint="@color/colorWhite"
-                            android:textColorLink="@color/colorWhite"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="15dp" />
+                            android:inputType="textPersonName"
+                            android:padding="15dp"
+                            android:layout_margin="10dp"
+                            android:textColor="@color/colorBlack"
+                            android:textColorHint="@color/colorBlack"
+                            android:textColorLink="@color/colorBlack"
+                            android:textSize="20dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -85,10 +80,70 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp">
+
+                        <Button
+                            android:id="@+id/TopRated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/rated_layout_in"
+                            android:onClick="doSearch"
+                            android:padding="15dp"
+                            android:text="@string/search_top_rated" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp">
+
+                        <Button
+                            android:id="@+id/Popular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/rated_layout_in"
+                            android:onClick="doSearch"
+                            android:padding="15dp"
+                            android:text="@string/search_popular" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp">
+
+                        <Button
+                            android:id="@+id/Upcoming"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/rated_layout_in"
+                            android:onClick="doSearch"
+                            android:padding="15dp"
+                            android:text="@string/search_up_coming" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewSearchOnline"
+                    android:id="@+id/recyclerViewSearchOffline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
@@ -125,6 +180,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:background="@drawable/rated_layout_in"
                     android:drawableStart="@drawable/return_button"
+                    android:onClick="doMain"
                     android:paddingStart="24dp" />
 
                 <Button

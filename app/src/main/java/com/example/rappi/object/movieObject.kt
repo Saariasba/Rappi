@@ -3,6 +3,7 @@ package com.example.rappi.`object`
 import com.example.rappi.model.Result
 import java.io.Serializable
 
+//Object Movie to use into to the aplication
 class movieObject(result: Result) : Serializable{
     val id = result.id
     val overview = result.overview

@@ -7,6 +7,7 @@ import com.example.rappi.utils.POPULAR
 import com.example.rappi.utils.TOP_RATED
 import com.example.rappi.utils.UP_COMING
 
+//This is the Listo to the ENDPOINTS from TMDB
 interface TmdbEndpoints {
 
     @GET("/3/movie/" + POPULAR)

@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-//This annotation to tell room what is the entity/table of the database
+//This Class is the MovieDatabase using RoomDataBase
 @Database(entities = arrayOf(Movie::class), version = 1)
 abstract class MoviesDatabase : RoomDatabase() {
 
